@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct NQueensApp: App {
+    
+    // MARK: - Properties
+
+    private let dependencies = AppDependencies()
+    
+    // MARK: - Body
+
     var body: some Scene {
         WindowGroup {
-            Text("NQueensApp")
+            AppCoordinatorView(dependencies: dependencies)
         }
     }
 }
