@@ -10,8 +10,10 @@ import SwiftUI
 protocol IGameHistoryService {
     var gamesCount: Int { get }
     var streakCount: Int { get }
-    
+
     var games: [GameHistoryItemModel] { get }
+
+    func clearAllGames()
 }
 
 @Observable
@@ -29,5 +31,9 @@ final class GameHistoryService: IGameHistoryService {
     
     init() {
         games = GameHistoryItemModel.mocks
+    }
+
+    func clearAllGames() {
+        games = []
     }
 }

@@ -19,7 +19,7 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     // MARK: - Navigation
     
     enum Destination: Hashable {
-        case game(GameViewMode)
+        case game(GameType)
         case gameHistory
     }
     
@@ -29,7 +29,7 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     }
     
     enum Action {
-        case openGame(GameViewMode)
+        case openGame(GameType)
         case presentGameHistory
         case openBoardSizeSheet
         case back
@@ -63,12 +63,17 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     func makeGameHistoryViewModel() -> GameHistoryViewModel {
         GameHistoryViewModel(
             gameHistoryService: dependencies.gameHistoryService,
+            settingsService: dependencies.settingsService,
             homeCoordinatorDelegate: self
         )
     }
     
-    func makeGameViewModel(mode: GameViewMode) -> GameViewModel {
-        GameViewModel(mode: mode, settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
+    func makeGameViewModel(for mode: GameType) -> GameViewModel {
+        GameViewModel(
+            mode: mode,
+            settingsService: dependencies.settingsService,
+            homeCoordinatorDelegate: self
+        )
     }
     
     func makeBoardSheetViewModel() -> BoardSheetViewModel {
@@ -93,7 +98,7 @@ extension HomeCoordinator: HomeCoordinatorDelegate {
             dismiss()
         case .restartGame:
             pop()
-            push(.game(.newGame))
+            push(.game(.new))
         }
     }
 }

@@ -32,7 +32,7 @@ struct GameHistoryItemModel: Identifiable, Equatable, Hashable {
         let f = DateFormatter()
         f.dateStyle = .medium
         f.timeStyle = .short
-        f.locale = Locale(identifier: "ru_RU")
+        f.locale = Locale(identifier: "en_US")
         return f.string(from: date)
     }
 }

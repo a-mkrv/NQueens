@@ -30,10 +30,15 @@ struct LayoutToken {
     static let spacing10: CGFloat = 10
     static let spacing12: CGFloat = 12
     static let spacing14: CGFloat = 14
+    static let spacing20: CGFloat = 20
     
     // MARK: - Corner Radius
     
     static let cornerRadius4: CGFloat = 4
     static let cornerRadius12: CGFloat = 12
     static let cornerRadius16: CGFloat = 16
+    
+    // MARK: - Other
+    
+    static let sheetHeight: CGFloat = 360
 }

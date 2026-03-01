@@ -48,7 +48,7 @@ final class HomeViewModel {
     func handle(_ action: Action) {
         switch action {
         case .openGame:
-            homeCoordinatorDelegate?.handle(.openGame(.newGame))
+            homeCoordinatorDelegate?.handle(.openGame(.new))
         case .presentGameHistory:
             homeCoordinatorDelegate?.handle(.presentGameHistory)
         case .openBoardSizeSheet:
