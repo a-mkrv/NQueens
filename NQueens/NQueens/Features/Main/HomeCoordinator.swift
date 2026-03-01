@@ -20,17 +20,21 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     
     enum Destination: Hashable {
         case game
+        case gameHistory
     }
     
     enum Sheet: String, Identifiable, Equatable {
-        case leaderboard
+        case boardSize
         var id: String { self.rawValue }
     }
     
     enum Action {
         case openGame
-        case presentLeaderboard
+        case presentGameHistory
+        case openBoardSizeSheet
         case back
+        case dismissSheet
+        case restartGame
     }
     
     // MARK: - Properties
@@ -54,6 +58,18 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
             homeCoordinatorDelegate: self
         )
     }
+    
+    func makeGameHistoryViewModel() -> GameHistoryViewModel {
+        GameHistoryViewModel(homeCoordinatorDelegate: self)
+    }
+    
+    func makeGameViewModel() -> GameViewModel {
+        GameViewModel(settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
+    }
+    
+    func makeBoardSheetViewModel() -> BoardSheetViewModel {
+        BoardSheetViewModel(settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
+    }
 }
 
 // MARK: - HomeNavigationDelegate
@@ -63,12 +79,17 @@ extension HomeCoordinator: HomeCoordinatorDelegate {
         switch action {
         case .openGame:
             push(.game)
-            
-        case .presentLeaderboard:
-            present(.leaderboard)
-            
+        case .presentGameHistory:
+            push(.gameHistory)
+        case .openBoardSizeSheet:
+            present(.boardSize)
         case .back:
             pop()
+        case .dismissSheet:
+            dismiss()
+        case .restartGame:
+            pop()
+            push(.game)
         }
     }
 }

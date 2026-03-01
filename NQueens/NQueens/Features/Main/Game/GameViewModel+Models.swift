@@ -1,11 +1,13 @@
 //
-//  HomeViewModel+Models.swift
+//  GameViewModel+Models.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.
 //
 
-extension HomeViewModel {
+import Foundation
+
+extension GameViewModel {
 
     // MARK: - ViewState
 
@@ -14,10 +16,9 @@ extension HomeViewModel {
     }
     
     // MARK: - Action
-    
+
     enum Action {
-        case openGame
-        case presentGameHistory
-        case openBoardSizeSheet
+        case back
+        case restart
     }
 }

@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  BoardSheetViewModel.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.
@@ -8,26 +8,23 @@
 import SwiftUI
 
 @Observable
-final class HomeViewModel {
+final class BoardSheetViewModel {
     
     // MARK: - Properties
     
     private(set) var viewState: ViewState = .loaded
     
-    var boardSize: Int {
+    var availableSizes: [Int] {
+        settingsService.availableSizes
+    }
+    
+    var currentSize: Int {
         settingsService.boardSize
     }
     
-    var bestTimeFormatted: String { "-" }
-    var winRateFormatted: String { "-" }
-    var totalGames: Int { 0 }
-    var totalWins: Int { 0 }
-    var streakCount: Int { 0 }
-    
     private let settingsService: ISettingsService
-    
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
-
+    
     // MARK: - Init
     
     init(
@@ -42,12 +39,11 @@ final class HomeViewModel {
     
     func handle(_ action: Action) {
         switch action {
-        case .openGame:
-            homeCoordinatorDelegate?.handle(.openGame)
-        case .presentGameHistory:
-            homeCoordinatorDelegate?.handle(.presentGameHistory)
-        case .openBoardSizeSheet:
-            homeCoordinatorDelegate?.handle(.openBoardSizeSheet)
+        case .selectSize(let size):
+            settingsService.updateBoardSize(size)
+            homeCoordinatorDelegate?.handle(.dismissSheet)
+        case .dismiss:
+            homeCoordinatorDelegate?.handle(.dismissSheet)
         }
     }
 }

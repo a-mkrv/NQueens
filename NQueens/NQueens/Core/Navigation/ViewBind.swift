@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - Workaround
 // SwiftUI.AtomicBuffer holds a strong reference to @Observable object
 // when passed directly via Binding to NavigationStack/sheet.
-// Intermediate @State breaks the retain — buffer holds @State instead
+// Intermediate @State breaks the retain - buffer holds @State instead
 // of coordinator, allowing proper deallocation.
 // Known SwiftUI + @Observable issue, reproducible via Memory Graph.
 

@@ -1,23 +1,24 @@
 //
-//  HomeViewModel+Models.swift
+//  BoardSheetViewModel+Models.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.
 //
 
-extension HomeViewModel {
+import Foundation
+
+extension BoardSheetViewModel {
 
     // MARK: - ViewState
 
     enum ViewState: Equatable {
         case loaded
     }
-    
+
     // MARK: - Action
-    
+
     enum Action {
-        case openGame
-        case presentGameHistory
-        case openBoardSizeSheet
+        case selectSize(Int)
+        case dismiss
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 protocol ISettingsService {
     var boardSize: Int { get }
+    var availableSizes: [Int] { get }
     
     func updateBoardSize(_ size: Int)
 }
@@ -18,6 +19,8 @@ final class SettingsService: ISettingsService {
     
     var boardSize: Int = .defaultBoardSize
     
+    let availableSizes: [Int] = [4, 6, 8, 10]
+
     func updateBoardSize(_ size: Int) {
         boardSize = size
     }

@@ -43,7 +43,9 @@ struct HomeCoordinatorView: View {
     private func destination(for route: HomeCoordinator.Destination) -> some View {
         switch route {
         case .game:
-            Text("GameView")
+            GameView(viewModel: coordinator.makeGameViewModel())
+        case .gameHistory:
+            GameHistoryView(viewModel: coordinator.makeGameHistoryViewModel())
         }
     }
     
@@ -52,9 +54,9 @@ struct HomeCoordinatorView: View {
     @ViewBuilder
     private func sheetContent(for sheet: HomeCoordinator.Sheet) -> some View {
         switch sheet {
-        case .leaderboard:
-            Text("LeaderboardSheetView")
-                .presentationDetents([.medium, .large])
+        case .boardSize:
+            BoardSheetView(viewModel: coordinator.makeBoardSheetViewModel())
+                .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
         }
     }
