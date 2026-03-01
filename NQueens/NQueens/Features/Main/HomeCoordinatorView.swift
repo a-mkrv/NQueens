@@ -42,8 +42,8 @@ struct HomeCoordinatorView: View {
     @ViewBuilder
     private func destination(for route: HomeCoordinator.Destination) -> some View {
         switch route {
-        case .game:
-            GameView(viewModel: coordinator.makeGameViewModel())
+        case .game(let mode):
+            GameView(viewModel: coordinator.makeGameViewModel(mode: mode))
         case .gameHistory:
             GameHistoryView(viewModel: coordinator.makeGameHistoryViewModel())
         }

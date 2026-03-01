@@ -19,7 +19,7 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     // MARK: - Navigation
     
     enum Destination: Hashable {
-        case game
+        case game(GameViewMode)
         case gameHistory
     }
     
@@ -29,7 +29,7 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     }
     
     enum Action {
-        case openGame
+        case openGame(GameViewMode)
         case presentGameHistory
         case openBoardSizeSheet
         case back
@@ -54,17 +54,21 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     
     private func makeHomeViewModel() -> HomeViewModel {
         HomeViewModel(
+            gameHistoryService: dependencies.gameHistoryService,
             settingsService: dependencies.settingsService,
             homeCoordinatorDelegate: self
         )
     }
     
     func makeGameHistoryViewModel() -> GameHistoryViewModel {
-        GameHistoryViewModel(homeCoordinatorDelegate: self)
+        GameHistoryViewModel(
+            gameHistoryService: dependencies.gameHistoryService,
+            homeCoordinatorDelegate: self
+        )
     }
     
-    func makeGameViewModel() -> GameViewModel {
-        GameViewModel(settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
+    func makeGameViewModel(mode: GameViewMode) -> GameViewModel {
+        GameViewModel(mode: mode, settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
     }
     
     func makeBoardSheetViewModel() -> BoardSheetViewModel {
@@ -77,8 +81,8 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
 extension HomeCoordinator: HomeCoordinatorDelegate {
     func handle(_ action: Action) {
         switch action {
-        case .openGame:
-            push(.game)
+        case .openGame(let mode):
+            push(.game(mode))
         case .presentGameHistory:
             push(.gameHistory)
         case .openBoardSizeSheet:
@@ -89,7 +93,7 @@ extension HomeCoordinator: HomeCoordinatorDelegate {
             dismiss()
         case .restartGame:
             pop()
-            push(.game)
+            push(.game(.newGame))
         }
     }
 }

@@ -42,27 +42,12 @@ struct HomeView: View {
     
     private var headerSection: some View {
         HStack {
-            streakBadge
             Spacer()
+            streakBadge
         }
         .padding(.horizontal, LayoutToken.padding24)
         .padding(.top, LayoutToken.padding14)
         .padding(.bottom, LayoutToken.padding8)
-    }
-    
-    private var avatarView: some View {
-        ZStack {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [ColorToken.green, ColorToken.greenDark],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(width: .avatarSize, height: .avatarSize)
-                .shadow(color: ColorToken.green.opacity(0.4), radius: .shadowRadiusS, y: 2)
-        }
     }
     
     private var streakBadge: some View {
@@ -108,7 +93,7 @@ struct HomeView: View {
                     .clipShape(RoundedRectangle(cornerRadius: LayoutToken.cornerRadius12))
 
                 VStack(alignment: .leading, spacing: LayoutToken.spacing2) {
-                    Text("Board size")
+                    Text("Board Size")
                         .font(TextToken.captionM)
                         .foregroundStyle(ColorToken.textSecondary)
                     
@@ -141,7 +126,7 @@ struct HomeView: View {
         Button {
             viewModel.handle(.openGame)
         } label: {
-            Text("Start game")
+            Text("Start Game")
                 .font(TextToken.titleL)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
@@ -168,15 +153,12 @@ struct HomeView: View {
         Button {
             viewModel.handle(.presentGameHistory)
         } label: {
-            HomeActionCard(
-                iconBackground: Color(hex: "0A84FF").opacity(0.12),
-                iconBorder: Color(hex: "0A84FF").opacity(0.2),
+            HistoryGameCard(
+                iconBackground: ColorToken.backgroundGray.opacity(0.12),
+                iconBorder: ColorToken.backgroundGray.opacity(0.2),
                 icon: "📋",
-                title: "Game history",
-                subtitle: "\(viewModel.totalGames) games · \(viewModel.totalWins) wins",
-                valueText: viewModel.winRateFormatted,
-                valueColor: ColorToken.green,
-                unitText: "wins"
+                title: "Game History",
+                subtitle: "\(viewModel.totalGames) games"
             )
         }
         .padding(.horizontal, LayoutToken.padding20)
@@ -186,16 +168,17 @@ struct HomeView: View {
 
 // MARK: - Subviews
 
-private struct HomeActionCard: View {
+private struct HistoryGameCard: View {
     
+    // MARK: - Properties
+
     let iconBackground: Color
     let iconBorder: Color
     let icon: String
     let title: String
     let subtitle: String
-    let valueText: String
-    let valueColor: Color
-    let unitText: String
+    
+    // MARK: - Body
     
     var body: some View {
         HStack(spacing: LayoutToken.spacing14) {
@@ -221,15 +204,6 @@ private struct HomeActionCard: View {
             }
             
             Spacer()
-            
-            VStack(alignment: .trailing, spacing: LayoutToken.spacing1) {
-                Text(valueText)
-                    .font(TextToken.titleS)
-                    .foregroundStyle(valueColor)
-                Text(unitText)
-                    .font(TextToken.captionXS)
-                    .foregroundStyle(ColorToken.textSecondary)
-            }
         }
         .padding(.horizontal, LayoutToken.padding18)
         .padding(.vertical, LayoutToken.padding16)
@@ -245,7 +219,6 @@ private struct HomeActionCard: View {
 
 private extension CGFloat {
     static let touchTarget: CGFloat = 44
-    static let avatarSize: CGFloat = 40
     static let logoSize: CGFloat = 64
     static let borderWidth: CGFloat = 1
     static let shadowRadiusS: CGFloat = 6

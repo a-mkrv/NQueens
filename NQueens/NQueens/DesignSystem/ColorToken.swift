@@ -14,12 +14,14 @@ struct ColorToken {
     static let backgroundMain = Color(hex: "1C1C1E")
     static let backgroundCard = Color(hex: "2C2C2E")
     static let backgroundElevated = Color(hex: "3A3A3C")
+    static let backgroundGray = Color(hex: "0A84FF")
 
     // MARK: - Accent
     
     static let green = Color(hex: "6AAE3A")
     static let greenDark = Color(hex: "3A7A1A")
     static let yellow = Color(hex: "FFD60A")
+    static let red = Color(hex: "FF3B30")
 
     // MARK: - Text
     

@@ -19,5 +19,6 @@ import SwiftUI
 final class AppDependencies {
     
     private(set) lazy var settingsService: ISettingsService = SettingsService()
+    private(set) lazy var gameHistoryService: IGameHistoryService = GameHistoryService()
     
 }

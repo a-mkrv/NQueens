@@ -18,15 +18,8 @@ extension GameHistoryViewModel {
     // MARK: - Action
 
     enum Action {
+        case onAppear
         case back
-        case selectGame(GameHistoryItem)
-    }
-
-    struct GameHistoryItem: Identifiable, Equatable {
-        let id: String
-        let boardSize: Int
-        let durationSeconds: Int
-        let date: Date
-        let isWin: Bool
+        case selectGame(GameHistoryItemModel)
     }
 }

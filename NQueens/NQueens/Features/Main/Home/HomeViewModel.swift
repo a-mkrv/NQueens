@@ -18,12 +18,15 @@ final class HomeViewModel {
         settingsService.boardSize
     }
     
-    var bestTimeFormatted: String { "-" }
-    var winRateFormatted: String { "-" }
-    var totalGames: Int { 0 }
-    var totalWins: Int { 0 }
-    var streakCount: Int { 0 }
+    var totalGames: Int {
+        gameHistoryService.gamesCount
+    }
     
+    var streakCount: Int {
+        gameHistoryService.streakCount
+    }
+    
+    private let gameHistoryService: IGameHistoryService
     private let settingsService: ISettingsService
     
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
@@ -31,9 +34,11 @@ final class HomeViewModel {
     // MARK: - Init
     
     init(
+        gameHistoryService: IGameHistoryService,
         settingsService: ISettingsService,
         homeCoordinatorDelegate: HomeCoordinatorDelegate?
     ) {
+        self.gameHistoryService = gameHistoryService
         self.settingsService = settingsService
         self.homeCoordinatorDelegate = homeCoordinatorDelegate
     }
@@ -43,7 +48,7 @@ final class HomeViewModel {
     func handle(_ action: Action) {
         switch action {
         case .openGame:
-            homeCoordinatorDelegate?.handle(.openGame)
+            homeCoordinatorDelegate?.handle(.openGame(.newGame))
         case .presentGameHistory:
             homeCoordinatorDelegate?.handle(.presentGameHistory)
         case .openBoardSizeSheet:

@@ -13,14 +13,17 @@ final class GameHistoryViewModel {
     // MARK: - Properties
 
     private(set) var viewState: ViewState = .loaded
-    
-    var games: [GameHistoryItem] = []
+    private(set) var games: [GameHistoryItemModel] = []
 
+    private let gameHistoryService: IGameHistoryService
+    
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
     // MARK: - Init
 
-    init(homeCoordinatorDelegate: HomeCoordinatorDelegate?) {
+    init(gameHistoryService: IGameHistoryService,
+         homeCoordinatorDelegate: HomeCoordinatorDelegate?) {
+        self.gameHistoryService = gameHistoryService
         self.homeCoordinatorDelegate = homeCoordinatorDelegate
     }
 
@@ -28,10 +31,18 @@ final class GameHistoryViewModel {
 
     func handle(_ action: Action) {
         switch action {
+        case .onAppear:
+            loadGames()
         case .back:
             homeCoordinatorDelegate?.handle(.back)
-        case .selectGame:
-            homeCoordinatorDelegate?.handle(.openGame)
+        case .selectGame(let game):
+            homeCoordinatorDelegate?.handle(.openGame(.replay(game)))
         }
+    }
+
+    // MARK: - Private
+
+    private func loadGames() {
+        games = gameHistoryService.games
     }
 }
