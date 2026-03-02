@@ -35,7 +35,7 @@ xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS
 
 ## Architecture
 
-![App Architecture](App%20Architecture.png)
+![App Architecture](Screenshots/App%20Architecture.png)
 
 ### Summary
 
