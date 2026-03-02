@@ -6,7 +6,7 @@ A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that n
 
 | Screenshot | Video |
 |------------|-------|
-| ![NQueens app](Screenshots/NQueensApp.jpg) | <video src="Screenshots/NQueensVideo.mov" controls width="320"></video> |
+| ![NQueens app](Screenshots/NQueensApp.jpg) | <video width="630" height="300" src="https://github.com/user-attachments/assets/20ff46a8-afba-4d8a-b25f-40574c81be70"></video> |
 
 ## Features
 
