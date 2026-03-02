@@ -1,5 +1,5 @@
 //
-//  GameHistoryViewModel+Models.swift
+//  GameHistoryViewModel+Action.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.

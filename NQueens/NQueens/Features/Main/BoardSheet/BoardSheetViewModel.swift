@@ -22,6 +22,8 @@ final class BoardSheetViewModel {
         settingsService.boardSize
     }
     
+    // MARK: - Dependencies
+
     private let settingsService: ISettingsService
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     

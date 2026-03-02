@@ -14,7 +14,6 @@ struct SelectorSheetView<Item: Hashable>: View {
     let title: String
     let items: [Item]
     let selectedItem: Item
-    let hideIcons: Bool
     let itemTitle: (Item) -> String
     let onSelect: (Item) -> Void
     let onDismiss: () -> Void
@@ -48,7 +47,7 @@ struct SelectorSheetView<Item: Hashable>: View {
                 onDismiss()
             } label: {
                 Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: .iconSizeL))
+                    .font(.system(size: .iconSize28))
                     .foregroundStyle(ColorToken.textSecondary)
             }
         }
@@ -66,12 +65,7 @@ struct SelectorSheetView<Item: Hashable>: View {
                     onSelect(item)
                 } label: {
                     HStack(spacing: LayoutToken.spacing14) {
-                        if !hideIcons {
-                            Text("♕")
-                                .font(TextToken.iconL)
-                                .foregroundStyle(.white)
-                        }
-                        
+
                         Text(itemTitle(item))
                             .font(TextToken.titleM)
                             .foregroundStyle(ColorToken.textPrimary)
@@ -80,17 +74,12 @@ struct SelectorSheetView<Item: Hashable>: View {
                         
                         if item == selectedItem {
                             Image(systemName: "checkmark.circle.fill")
-                                .font(.system(size: .iconSizeM))
+                                .font(.system(size: .iconSize22))
                                 .foregroundStyle(ColorToken.green)
                         }
                     }
-                    .padding(.horizontal, LayoutToken.padding18)
-                    .padding(.vertical, LayoutToken.padding16)
-                    .background(ColorToken.backgroundCard, in: RoundedRectangle(cornerRadius: LayoutToken.cornerRadius16))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: LayoutToken.cornerRadius16)
-                            .stroke(ColorToken.backgroundElevated, lineWidth: .borderWidth)
-                    )
+                    .padding(LayoutToken.padding16)
+                    .cardStyle()
                 }
                 .buttonStyle(.plain)
             }
@@ -99,10 +88,8 @@ struct SelectorSheetView<Item: Hashable>: View {
     }
 }
 
-// MARK: - Constants
-
 private extension CGFloat {
-    static let iconSizeL: CGFloat = 28
-    static let iconSizeM: CGFloat = 22
-    static let borderWidth: CGFloat = 1
+    static let iconSize22: CGFloat = 22
+    static let iconSize28: CGFloat = 28
 }
+

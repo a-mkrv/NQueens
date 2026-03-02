@@ -17,9 +17,10 @@ struct TextToken {
     static let captionL = Font.system(size: 18, weight: .regular, design: .rounded)
     
     // MARK: - Icon / Badge
-    
+
     static let iconM = Font.system(size: 17, weight: .regular, design: .rounded)
     static let iconL = Font.system(size: 22, weight: .regular, design: .rounded)
+    static let iconXL = Font.system(size: 56, weight: .regular, design: .rounded)
     static let navButton = Font.system(size: 18, weight: .semibold, design: .rounded)
 
     // MARK: - Body

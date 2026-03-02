@@ -17,10 +17,9 @@ struct BoardSheetView: View {
         switch viewModel.viewState {
         case .loaded:
             SelectorSheetView(
-                title: "Board size",
+                title: "Board Size",
                 items: viewModel.availableSizes,
                 selectedItem: viewModel.currentSize,
-                hideIcons: false,
                 itemTitle: {
                     "\($0)×\($0)"
                 },

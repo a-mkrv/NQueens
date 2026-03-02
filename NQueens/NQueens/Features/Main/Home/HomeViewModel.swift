@@ -26,6 +26,8 @@ final class HomeViewModel {
         gameHistoryService.streakCount
     }
     
+    // MARK: - Dependencies
+    
     private let gameHistoryService: IGameHistoryService
     private let settingsService: ISettingsService
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameHistoryItemModel: Identifiable, Equatable, Hashable {
+struct GameHistoryItemModel: Identifiable, Equatable, Hashable, Codable {
     
     let id: UUID
     let boardSize: Int
@@ -28,44 +28,15 @@ struct GameHistoryItemModel: Identifiable, Equatable, Hashable {
         return String(format: "%d:%02d", m, s)
     }
 
-    var formattedDate: String {
+    private static let dateFormatter: DateFormatter = {
         let f = DateFormatter()
         f.dateStyle = .medium
         f.timeStyle = .short
         f.locale = Locale(identifier: "en_US")
-        return f.string(from: date)
+        return f
+    }()
+
+    var formattedDate: String {
+        Self.dateFormatter.string(from: date)
     }
-}
-
-// MARK: - Mocks
-
-extension GameHistoryItemModel {
-    static let mocks: [GameHistoryItemModel] = [
-        .init(
-            id: UUID(),
-            boardSize: 10,
-            moveCount: 215,
-            placements : [
-                .init(row: 0, col: 4), .init(row: 1, col: 7),
-                .init(row: 2, col: 1), .init(row: 3, col: 9)
-            ],
-            durationSeconds: 10,
-            date: .now - 86400 * 2,
-            solvedWithHint: false
-        ),
-        .init(
-            id: UUID(),
-            boardSize: 8,
-            moveCount: 95,
-            placements: [
-                .init(row: 0, col: 4), .init(row: 1, col: 0),
-                .init(row: 2, col: 7), .init(row: 3, col: 5),
-                .init(row: 4, col: 2), .init(row: 5, col: 6),
-                .init(row: 6, col: 1), .init(row: 7, col: 3)
-            ],
-            durationSeconds: 83,
-            date: .now - 86400 * 3,
-            solvedWithHint: true
-        ),
-    ]
 }

@@ -58,6 +58,8 @@ struct HomeCoordinatorView: View {
             BoardSheetView(viewModel: coordinator.makeBoardSheetViewModel())
                 .presentationDetents([.height(LayoutToken.sheetHeight)])
                 .presentationDragIndicator(.visible)
+        case .winModal(let result):
+            WinModalView(viewModel: coordinator.makeWinModalViewModel(result: result))
         }
     }
 }

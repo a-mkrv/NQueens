@@ -1,5 +1,5 @@
 //
-//  HomeViewModel+Models.swift
+//  HomeViewModel+Action.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.

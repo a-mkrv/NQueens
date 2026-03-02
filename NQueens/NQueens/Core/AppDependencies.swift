@@ -5,7 +5,7 @@
 //  Created by Anton Makarov on 28.02.2026.
 //
 
-import SwiftUI
+import Foundation
 
 /// Dependency Injection Container
 ///
@@ -20,5 +20,6 @@ final class AppDependencies {
     
     private(set) lazy var settingsService: ISettingsService = SettingsService()
     private(set) lazy var gameHistoryService: IGameHistoryService = GameHistoryService()
+    private(set) lazy var gameValidationService: IGameValidationService = GameValidationService()
     
 }

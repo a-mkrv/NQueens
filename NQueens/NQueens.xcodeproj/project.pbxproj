@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		03B68A402F55057900BA76F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03B689492F53175800BA76F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03B689502F53175800BA76F6;
+			remoteInfo = NQueens;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		03B689512F53175800BA76F6 /* NQueens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NQueens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B68A3C2F55057900BA76F6 /* NQueensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NQueensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = NQueens;
 			sourceTree = "<group>";
 		};
+		03B68A3D2F55057900BA76F6 /* NQueensTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NQueensTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		03B6894E2F53175800BA76F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B68A392F55057900BA76F6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				03B689532F53175800BA76F6 /* NQueens */,
+				03B68A3D2F55057900BA76F6 /* NQueensTests */,
 				03B689522F53175800BA76F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				03B689512F53175800BA76F6 /* NQueens.app */,
+				03B68A3C2F55057900BA76F6 /* NQueensTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 03B689512F53175800BA76F6 /* NQueens.app */;
 			productType = "com.apple.product-type.application";
 		};
+		03B68A3B2F55057900BA76F6 /* NQueensTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B68A422F55057900BA76F6 /* Build configuration list for PBXNativeTarget "NQueensTests" */;
+			buildPhases = (
+				03B68A382F55057900BA76F6 /* Sources */,
+				03B68A392F55057900BA76F6 /* Frameworks */,
+				03B68A3A2F55057900BA76F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03B68A412F55057900BA76F6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				03B68A3D2F55057900BA76F6 /* NQueensTests */,
+			);
+			name = NQueensTests;
+			packageProductDependencies = (
+			);
+			productName = NQueensTests;
+			productReference = 03B68A3C2F55057900BA76F6 /* NQueensTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					03B689502F53175800BA76F6 = {
 						CreatedOnToolsVersion = 26.1;
+					};
+					03B68A3B2F55057900BA76F6 = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 03B689502F53175800BA76F6;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				03B689502F53175800BA76F6 /* NQueens */,
+				03B68A3B2F55057900BA76F6 /* NQueensTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		03B6894F2F53175800BA76F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03B68A3A2F55057900BA76F6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03B68A382F55057900BA76F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03B68A412F55057900BA76F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03B689502F53175800BA76F6 /* NQueens */;
+			targetProxy = 03B68A402F55057900BA76F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		03B6895A2F53175900BA76F6 /* Debug */ = {
@@ -329,6 +404,53 @@
 			};
 			name = Release;
 		};
+		03B68A432F55057900BA76F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8RP8Z7ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.mkrv.NQueensTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NQueens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NQueens";
+			};
+			name = Debug;
+		};
+		03B68A442F55057900BA76F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8RP8Z7ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.mkrv.NQueensTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NQueens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NQueens";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +468,15 @@
 			buildConfigurations = (
 				03B6895D2F53175900BA76F6 /* Debug */,
 				03B6895E2F53175900BA76F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B68A422F55057900BA76F6 /* Build configuration list for PBXNativeTarget "NQueensTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B68A432F55057900BA76F6 /* Debug */,
+				03B68A442F55057900BA76F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

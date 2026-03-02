@@ -6,8 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		03B27BE62F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */; };
+		03B27BE92F4DED5200D655A8 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */; };
+		03B27BEB2F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */; };
+		03B27BED2F4DED5200D655A8 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */; };
+		03B27BEF2F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		03B27BC52F4DED5200D655A8 /* NQueens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NQueens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B27BE02F4DED5200D655A8 /* NQueensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NQueensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameValidationServiceTests.swift; sourceTree = "<group>"; };
+		03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
+		03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
+		03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +40,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03B27BE52F4DED5200D655A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				03B27BC72F4DED5200D655A8 /* NQueens */,
+				03B27BE12F4DED5200D655A8 /* NQueensTests */,
 				03B27BC62F4DED5200D655A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,11 +63,34 @@
 			isa = PBXGroup;
 			children = (
 				03B27BC52F4DED5200D655A8 /* NQueens.app */,
+				03B27BE02F4DED5200D655A8 /* NQueensTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+		03B27BE12F4DED5200D655A8 /* NQueensTests */ = {
+			isa = PBXGroup;
+			children = (
+				03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */,
+				03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */,
+				03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */,
+				03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */,
+				03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */,
+			);
+			path = NQueensTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXContainerItemProxy section */
+		03B27BE82F4DED5200D655A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03B27BBD2F4DED5200D655A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03B27BC42F4DED5200D655A8;
+			remoteInfo = NQueens;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXNativeTarget section */
 		03B27BC42F4DED5200D655A8 /* NQueens */ = {
@@ -70,6 +115,25 @@
 			productReference = 03B27BC52F4DED5200D655A8 /* NQueens.app */;
 			productType = "com.apple.product-type.application";
 		};
+		03B27BE32F4DED5200D655A8 /* NQueensTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B27BD52F4DED5300D655A8 /* Build configuration list for PBXNativeTarget "NQueensTests" */;
+			buildPhases = (
+				03B27BE42F4DED5200D655A8 /* Sources */,
+				03B27BE52F4DED5200D655A8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03B27BE72F4DED5200D655A8 /* PBXTargetDependency */,
+			);
+			name = NQueensTests;
+			packageProductDependencies = (
+			);
+			productName = NQueensTests;
+			productReference = 03B27BE02F4DED5200D655A8 /* NQueensTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +145,9 @@
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					03B27BC42F4DED5200D655A8 = {
+						CreatedOnToolsVersion = 26.1;
+					};
+					03B27BE32F4DED5200D655A8 = {
 						CreatedOnToolsVersion = 26.1;
 					};
 				};
@@ -100,6 +167,7 @@
 			projectRoot = "";
 			targets = (
 				03B27BC42F4DED5200D655A8 /* NQueens */,
+				03B27BE32F4DED5200D655A8 /* NQueensTests */,
 			);
 		};
 /* End PBXProject section */
@@ -122,7 +190,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03B27BE42F4DED5200D655A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B27BE62F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */,
+				03B27BE92F4DED5200D655A8 /* TestDoubles.swift in Sources */,
+				03B27BEB2F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */,
+				03B27BED2F4DED5200D655A8 /* GameViewModelTests.swift in Sources */,
+				03B27BEF2F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03B27BE72F4DED5200D655A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03B27BC42F4DED5200D655A8 /* NQueens */;
+			targetProxy = 03B27BE82F4DED5200D655A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		03B27BCE2F4DED5300D655A8 /* Debug */ = {
@@ -329,6 +417,62 @@
 			};
 			name = Release;
 		};
+		03B27BD32F4DED5300D655A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8RP8Z7ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.mkrv.NQueensTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NQueens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NQueens";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		03B27BD42F4DED5300D655A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RA8RP8Z7ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = a.mkrv.NQueensTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NQueens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NQueens";
+				XROS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +490,15 @@
 			buildConfigurations = (
 				03B27BD12F4DED5300D655A8 /* Debug */,
 				03B27BD22F4DED5300D655A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B27BD52F4DED5300D655A8 /* Build configuration list for PBXNativeTarget "NQueensTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B27BD32F4DED5300D655A8 /* Debug */,
+				03B27BD42F4DED5300D655A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

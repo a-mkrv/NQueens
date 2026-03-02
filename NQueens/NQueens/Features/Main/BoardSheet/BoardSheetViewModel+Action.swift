@@ -1,5 +1,5 @@
 //
-//  GameViewModel+Models.swift
+//  BoardSheetViewModel+Action.swift
 //  NQueens
 //
 //  Created by Anton Makarov on 28.02.2026.
@@ -7,18 +7,18 @@
 
 import Foundation
 
-extension GameViewModel {
+extension BoardSheetViewModel {
 
     // MARK: - ViewState
 
     enum ViewState: Equatable {
         case loaded
     }
-    
+
     // MARK: - Action
 
     enum Action {
-        case back
-        case restart
+        case selectSize(Int)
+        case dismiss
     }
 }

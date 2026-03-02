@@ -43,7 +43,7 @@ class FlowCoordinator<Destination: Hashable, Sheet: Identifiable & Hashable> {
     // MARK: - Reset
     
     func resetNavigation() {
-        path.removeAll()
         sheet = nil
+        path.removeAll()
     }
 }

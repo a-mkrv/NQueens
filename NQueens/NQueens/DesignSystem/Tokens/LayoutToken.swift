@@ -1,5 +1,8 @@
 //
 //  LayoutToken.swift
+//  NQueens
+//
+//  Created by Anton Makarov on 28.02.2026.
 //
 
 import Foundation
@@ -18,7 +21,9 @@ struct LayoutToken {
     static let padding18: CGFloat = 18
     static let padding20: CGFloat = 20
     static let padding24: CGFloat = 24
-    
+    static let padding32: CGFloat = 32
+    static let padding36: CGFloat = 36
+
     // MARK: - Spacing
     
     static let spacing0: CGFloat = 0
@@ -33,12 +38,15 @@ struct LayoutToken {
     static let spacing20: CGFloat = 20
     
     // MARK: - Corner Radius
-    
+
     static let cornerRadius4: CGFloat = 4
+    static let cornerRadius8: CGFloat = 8
     static let cornerRadius12: CGFloat = 12
     static let cornerRadius16: CGFloat = 16
-    
+
     // MARK: - Other
-    
+
+    static let borderWidth: CGFloat = 1
+    static let shadowRadiusM: CGFloat = 16
     static let sheetHeight: CGFloat = 360
 }
