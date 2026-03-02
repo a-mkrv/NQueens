@@ -1,19 +1,77 @@
 # NQueens
 
-A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other. 
+A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other. Supports iPhone, iPad, Mac, and Apple Vision Pro.
 
-## How to test, build & run
+## Screenshots
 
-**Xcode:** Open `NQueens.xcodeproj`, select the **NQueens** scheme, then **⌘R** (run), **⌘B** (build), or **⌘U** (tests). 
+![NQueens app](Screenshots/NQueensApp.jpg)
 
-**Command line:**
+## Features
+
+- **Variable board sizes** — Choose from 4×4, 6×6, 8×8, or 10×10 boards
+- **Real-time conflict detection** — Conflicting queens and attack lines are highlighted
+- **Hints** — Suggested placements to help you progress
+- **Streaks** — Consecutive days played; track your consistency on the home screen
+- **Game history** — Personal history with move count, duration, and persistent storage
+- **Queen styles** — Multiple visual styles for the queen piece
+- **Liquid Glass icons** — Modern iOS 26 Liquid Glass design for icons and UI
+- **Animations** — Smooth queen placement and victory confetti celebration
+- **Haptic feedback** — Tactile responses for placements and key actions
+
+## Requirements
+
+- **Xcode:** 15.0+ (project uses 26.x)
+- **iOS Deployment Target:** 17.0+
+- **Swift:** 5.9+
+- **Platforms:** iOS, macOS, visionOS
+
+## Build & Run
+
+### 1. Clone or download
+
+```bash
+git clone <repository-url>
+cd NQueens
+```
+
+### 2. Open in Xcode
+
+```bash
+open NQueens.xcodeproj
+```
+
+Or open Xcode and use **File → Open** and select the project folder.
+
+### 3. Select target
+
+- Choose an iOS Simulator (e.g. iPhone 16), a physical device, or My Mac
+- Ensure the scheme is set to **NQueens**
+
+### 4. Build & run
+
+**Via Xcode:** Press **⌘R** (Cmd + R)
+
+**Via command line:**
 
 ```bash
 xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS Simulator,name=iPhone 16' build
-xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS Simulator,name=iPhone 16' test
 ```
 
-**Requirements:** Xcode 26.x, Swift 5.x. Platforms: iOS, macOS.
+## Running tests
+
+**Via Xcode:** Press **⌘U** (Cmd + U)
+
+**Via command line:**
+
+```bash
+xcodebuild test \
+  -project NQueens.xcodeproj \
+  -scheme NQueens \
+  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  -resultBundlePath TestResults
+```
+
+---
 
 ## Architecture
 
@@ -29,8 +87,6 @@ xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS
 | Navigation | Coordinator with `FlowCoordinator` + delegate from ViewModels | Clear separation of flow and UI state; easy to test ViewModels |
 | Structure | Features + Core + DesignSystem + Services | Easy to find code and scale by feature |
 | Tests | XCTest + mocks implementing service/coordinator protocols | Fast, deterministic unit tests without UI or real I/O |
-
-[App Architecture.png]
 
 ### High-level structure
 
