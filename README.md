@@ -2,9 +2,11 @@
 
 A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other.
 
-## Screenshots
+## Screenshots & Video
 
-![NQueens app](Screenshots/NQueensApp.jpg)
+| Screenshot | Video |
+|------------|-------|
+| ![NQueens app](Screenshots/NQueensApp.jpg) | <video src="Screenshots/NQueensVideo.mov" controls width="320"></video> |
 
 ## Features
 
