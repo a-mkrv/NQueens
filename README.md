@@ -1,6 +1,6 @@
 # NQueens
 
-A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other. Supports iPhone, iPad, Mac, and Apple Vision Pro.
+A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other.
 
 ## Screenshots
 
@@ -18,58 +18,18 @@ A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that n
 - **Animations** — Smooth queen placement and victory confetti celebration
 - **Haptic feedback** — Tactile responses for placements and key actions
 
-## Requirements
+## How to test, build & run
 
-- **Xcode:** 15.0+ (project uses 26.x)
-- **iOS Deployment Target:** 17.0+
-- **Swift:** 5.9+
-- **Platforms:** iOS, macOS, visionOS
+**Xcode:** Open `NQueens.xcodeproj`, select the **NQueens** scheme, then **⌘R** (run), **⌘B** (build), or **⌘U** (tests). 
 
-## Build & Run
-
-### 1. Clone or download
-
-```bash
-git clone <repository-url>
-cd NQueens
-```
-
-### 2. Open in Xcode
-
-```bash
-open NQueens.xcodeproj
-```
-
-Or open Xcode and use **File → Open** and select the project folder.
-
-### 3. Select target
-
-- Choose an iOS Simulator (e.g. iPhone 16), a physical device, or My Mac
-- Ensure the scheme is set to **NQueens**
-
-### 4. Build & run
-
-**Via Xcode:** Press **⌘R** (Cmd + R)
-
-**Via command line:**
+**Command line:**
 
 ```bash
 xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS Simulator,name=iPhone 16' build
+xcodebuild -project NQueens.xcodeproj -scheme NQueens -destination 'platform=iOS Simulator,name=iPhone 16' test
 ```
 
-## Running tests
-
-**Via Xcode:** Press **⌘U** (Cmd + U)
-
-**Via command line:**
-
-```bash
-xcodebuild test \
-  -project NQueens.xcodeproj \
-  -scheme NQueens \
-  -destination 'platform=iOS Simulator,name=iPhone 16' \
-  -resultBundlePath TestResults
-```
+**Requirements:** Xcode 26.x, Swift 6.x. Platforms: iOS.
 
 ---
 
