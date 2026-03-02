@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03B27BE62F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */; };
 		03B27BE92F4DED5200D655A8 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */; };
-		03B27BEB2F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */; };
-		03B27BED2F4DED5200D655A8 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */; };
-		03B27BEF2F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */; };
+		03B27BF12F4DED5200D655A8 /* PlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF22F4DED5200D655A8 /* PlaceholderTests.swift */; };
+		03B27BF32F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF42F4DED5200D655A8 /* HomeViewModelTests.swift */; };
+		03B27BF52F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF62F4DED5200D655A8 /* GameValidationServiceTests.swift */; };
+		03B27BF72F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BF82F4DED5200D655A8 /* GameHistoryViewModelTests.swift */; };
+		03B27BF92F4DED5200D655A8 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B27BFA2F4DED5200D655A8 /* GameViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03B27BC52F4DED5200D655A8 /* NQueens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NQueens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B27BE02F4DED5200D655A8 /* NQueensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NQueensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameValidationServiceTests.swift; sourceTree = "<group>"; };
 		03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
-		03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
-		03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
-		03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryViewModelTests.swift; sourceTree = "<group>"; };
+		03B27BF22F4DED5200D655A8 /* PlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTests.swift; sourceTree = "<group>"; };
+		03B27BF42F4DED5200D655A8 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		03B27BF62F4DED5200D655A8 /* GameValidationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameValidationServiceTests.swift; sourceTree = "<group>"; };
+		03B27BF82F4DED5200D655A8 /* GameHistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryViewModelTests.swift; sourceTree = "<group>"; };
+		03B27BFA2F4DED5200D655A8 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -71,13 +73,38 @@
 		03B27BE12F4DED5200D655A8 /* NQueensTests */ = {
 			isa = PBXGroup;
 			children = (
-				03B27BE22F4DED5200D655A8 /* GameValidationServiceTests.swift */,
 				03B27BEA2F4DED5200D655A8 /* TestDoubles.swift */,
-				03B27BEC2F4DED5200D655A8 /* HomeViewModelTests.swift */,
-				03B27BEE2F4DED5200D655A8 /* GameViewModelTests.swift */,
-				03B27BF02F4DED5200D655A8 /* GameHistoryViewModelTests.swift */,
+				03B27BFB2F4DED5200D655A8 /* Services */,
+				03B27BFC2F4DED5200D655A8 /* UnitTests */,
+				03B27BFD2F4DED5200D655A8 /* Navigation */,
 			);
 			path = NQueensTests;
+			sourceTree = "<group>";
+		};
+		03B27BFB2F4DED5200D655A8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03B27BF62F4DED5200D655A8 /* GameValidationServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		03B27BFC2F4DED5200D655A8 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				03B27BF42F4DED5200D655A8 /* HomeViewModelTests.swift */,
+				03B27BF82F4DED5200D655A8 /* GameHistoryViewModelTests.swift */,
+				03B27BFA2F4DED5200D655A8 /* GameViewModelTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		03B27BFD2F4DED5200D655A8 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				03B27BF22F4DED5200D655A8 /* PlaceholderTests.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,11 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03B27BE62F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */,
 				03B27BE92F4DED5200D655A8 /* TestDoubles.swift in Sources */,
-				03B27BEB2F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */,
-				03B27BED2F4DED5200D655A8 /* GameViewModelTests.swift in Sources */,
-				03B27BEF2F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */,
+				03B27BF12F4DED5200D655A8 /* PlaceholderTests.swift in Sources */,
+				03B27BF32F4DED5200D655A8 /* HomeViewModelTests.swift in Sources */,
+				03B27BF52F4DED5200D655A8 /* GameValidationServiceTests.swift in Sources */,
+				03B27BF72F4DED5200D655A8 /* GameHistoryViewModelTests.swift in Sources */,
+				03B27BF92F4DED5200D655A8 /* GameViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
