@@ -2,7 +2,7 @@
 //  ConfettiFallModifier.swift
 //  NQueens
 //
-//  Created by makarovant on 02.03.2026.
+//  Created by Anton Makarov on 02.03.2026.
 //
 
 import SwiftUI

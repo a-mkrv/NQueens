@@ -2,15 +2,12 @@
 //  VictoryConfettiView.swift
 //  NQueens
 //
-//  Created by makarovant on 02.03.2026.
+//  Created by Anton Makarov on 02.03.2026.
 //
 
 import SwiftUI
 
 struct VictoryConfettiView: View {
-    
-    // MARK: - Properties
-    
     private static let colors: [Color] = [
         ColorToken.yellow,
         ColorToken.green,
@@ -21,8 +18,6 @@ struct VictoryConfettiView: View {
     private static let particleCount = 24
 
     let trigger: Bool
-
-    // MARK: - Body
 
     var body: some View {
         GeometryReader { geo in

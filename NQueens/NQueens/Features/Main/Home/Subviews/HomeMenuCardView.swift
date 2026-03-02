@@ -2,15 +2,12 @@
 //  HomeMenuCardView.swift
 //  NQueens
 //
-//  Created by makarovant on 02.03.2026.
+//  Created by Anton Makarov on 02.03.2026.
 //
 
 import SwiftUI
 
 struct HomeMenuCardView: View {
-    
-    // MARK: - Properties
-    
     enum ImageType {
         case emoji(name: String)
         case resource(name: String)
@@ -20,8 +17,6 @@ struct HomeMenuCardView: View {
     private let title: String
     private let subtitle: String
     private let showsDisclosure: Bool
-    
-    // MARK: - Init
 
     init(
         image: ImageType,
@@ -34,9 +29,7 @@ struct HomeMenuCardView: View {
         self.subtitle = subtitle
         self.showsDisclosure = showsDisclosure
     }
-    
-    // MARK: - Body
-    
+
     var body: some View {
         HStack(spacing: LayoutToken.spacing12) {
             

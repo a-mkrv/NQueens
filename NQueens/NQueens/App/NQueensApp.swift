@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct NQueensApp: App {
     
-    // MARK: - Properties
+    // MARK: - Dependencies
 
     private let dependencies = AppDependencies()
     
-    // MARK: - Body
+    // MARK: - Root Body
 
     var body: some Scene {
         WindowGroup {
