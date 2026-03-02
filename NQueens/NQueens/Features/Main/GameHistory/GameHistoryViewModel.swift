@@ -15,13 +15,15 @@ final class GameHistoryViewModel {
     private(set) var viewState: ViewState = .loaded
     private(set) var games: [GameHistoryItemModel] = []
     private(set) var sortOrder: SortOrder = .date
-    private(set) var selectedSizeFilter: Int? = nil
+    private(set) var selectedSizeFilter: Int?
 
     var isSortModalPresented: Bool = false
     var isClearConfirmPresented: Bool = false
 
     var filteredGames: [GameHistoryItemModel] {
-        guard let size = selectedSizeFilter else { return games }
+        guard let size = selectedSizeFilter else {
+            return games
+        }
         return games.filter { $0.boardSize == size }
     }
 

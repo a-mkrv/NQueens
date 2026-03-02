@@ -12,7 +12,7 @@ struct HomeMenuCardView: View {
         case emoji(name: String)
         case resource(name: String)
     }
-    
+
     private let image: ImageType
     private let title: String
     private let subtitle: String
@@ -32,7 +32,7 @@ struct HomeMenuCardView: View {
 
     var body: some View {
         HStack(spacing: LayoutToken.spacing12) {
-            
+
             switch image {
             case .emoji(let name):
                 ZStack {
@@ -45,14 +45,14 @@ struct HomeMenuCardView: View {
                     Text(name)
                 }
                 .frame(squared: .imageSize)
-                
+
             case .resource(let name):
                 Image(name)
                     .resizable()
                     .frame(squared: .imageSize)
                     .clipRounded(with: LayoutToken.cornerRadius12)
             }
-            
+
             VStack(alignment: .leading, spacing: LayoutToken.spacing2) {
                 Text(title)
                     .font(TextToken.titleS)
@@ -61,9 +61,9 @@ struct HomeMenuCardView: View {
                     .font(TextToken.captionM)
                     .foregroundStyle(ColorToken.textSecondary)
             }
-            
+
             Spacer()
-            
+
             if showsDisclosure {
                 Image(systemName: "chevron.down")
                     .font(TextToken.titleS)

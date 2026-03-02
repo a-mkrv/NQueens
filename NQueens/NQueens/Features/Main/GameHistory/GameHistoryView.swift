@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct GameHistoryView: View {
-    
+
     @Bindable var viewModel: GameHistoryViewModel
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         ZStack {
             ColorToken.backgroundMain
                 .ignoresSafeArea()
-            
+
             switch viewModel.viewState {
             case .loaded:
                 loadedView
@@ -56,31 +56,31 @@ struct GameHistoryView: View {
             Text("Are you sure?")
         }
     }
-    
+
     // MARK: - Loaded
-    
+
     private var loadedView: some View {
         VStack(spacing: LayoutToken.spacing0) {
             headerSection
-            
+
             if !viewModel.games.isEmpty {
                 sizeFilterTagsSection
             }
             contentSection
         }
     }
-    
+
     private var headerSection: some View {
         ZStack {
             Text("Game History")
                 .font(TextToken.headM)
                 .foregroundStyle(ColorToken.textPrimary)
-            
+
             HStack {
                 navBarButton(icon: "chevron.left", action: .back)
-                
+
                 Spacer()
-                
+
                 HStack(spacing: LayoutToken.spacing0) {
                     if !viewModel.games.isEmpty {
                         navBarButton(icon: "trash", action: .openClearConfirm)
@@ -93,7 +93,7 @@ struct GameHistoryView: View {
         .padding(.top, LayoutToken.padding14)
         .padding(.bottom, LayoutToken.padding8)
     }
-    
+
     private func navBarButton(icon: String, action: GameHistoryViewModel.Action) -> some View {
         Button {
             viewModel.handle(action)
@@ -104,9 +104,9 @@ struct GameHistoryView: View {
                 .frame(squared: .imageSize)
         }
     }
-    
+
     // MARK: - Tags
-    
+
     private var sizeFilterTagsSection: some View {
         HStack(spacing: LayoutToken.spacing8) {
             ForEach(viewModel.sizeFilterOptions, id: \.self) { option in
@@ -120,8 +120,8 @@ struct GameHistoryView: View {
                         .padding(.vertical, LayoutToken.padding8)
                         .background(
                             viewModel.selectedSizeFilter == option
-                            ? ColorToken.green
-                            : ColorToken.backgroundCard,
+                                ? ColorToken.green
+                                : ColorToken.backgroundCard,
                             in: Capsule()
                         )
                         .overlay(
@@ -135,9 +135,9 @@ struct GameHistoryView: View {
         .padding(.horizontal, LayoutToken.padding20)
         .padding(.vertical, LayoutToken.padding12)
     }
-    
+
     // MARK: - Content Section
-    
+
     @ViewBuilder
     private var contentSection: some View {
         if viewModel.isEmpty {
@@ -146,17 +146,17 @@ struct GameHistoryView: View {
             gamesListView
         }
     }
-    
+
     private var emptyStateView: some View {
         VStack(spacing: LayoutToken.spacing20) {
             Text("♛")
                 .font(.system(size: CGFloat.logoSize))
                 .foregroundStyle(ColorToken.textSecondary.opacity(0.5))
-            
+
             Text("No Games Yet")
                 .font(TextToken.bodyM)
                 .foregroundStyle(ColorToken.textSecondary)
-            
+
             PrimaryButton(size: .large, title: "Start Game") {
                 viewModel.handle(.startGame)
             }
@@ -165,7 +165,7 @@ struct GameHistoryView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-    
+
     private var gamesListView: some View {
         ScrollView {
             LazyVStack(spacing: LayoutToken.spacing10) {

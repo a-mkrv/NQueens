@@ -9,11 +9,11 @@ import SwiftUI
 
 @Observable
 final class AppCoordinator {
-    
+
     // MARK: - Properties
 
     private let dependencies: AppDependencies
-    
+
     private(set) var homeCoordinator: HomeCoordinator
 
     // MARK: - Init

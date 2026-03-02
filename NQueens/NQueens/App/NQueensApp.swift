@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct NQueensApp: App {
-    
+
     // MARK: - Dependencies
 
     private let dependencies = AppDependencies()
-    
+
     // MARK: - Root Body
 
     var body: some Scene {

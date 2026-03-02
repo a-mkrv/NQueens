@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ConfettiFallModifier: ViewModifier {
-    
+
     // MARK: - Properties
-    
+
     let delay: Double
     let duration: Double
     let height: CGFloat
@@ -27,11 +27,13 @@ struct ConfettiFallModifier: ViewModifier {
             .rotationEffect(.degrees(rotationDegrees))
             .onAppear {
                 rotationDegrees = Double.random(in: 180...360)
-                guard !hasTriggered else { return }
-                
+                guard !hasTriggered else {
+                    return
+                }
+
                 withAnimation(
                     .easeIn(duration: duration)
-                    .delay(delay)
+                        .delay(delay)
                 ) {
                     hasTriggered = true
                 }

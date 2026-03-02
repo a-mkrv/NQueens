@@ -12,7 +12,7 @@ enum QueenStyle: String, CaseIterable, Identifiable {
     case queen_2
     case queen_3
     case queen_4
-    
+
     var id: String { rawValue }
     var imageName: String {
         self.rawValue

@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct PrimaryButton: View {
-    
+
     // MARK: - Properties
-    
+
     enum Size {
         case large
         case compact
     }
-    
+
     private let size: Size
     private let title: String
     private let imageName: String?
     private let onTapAction: () -> Void
-    
+
     private var cornerRadius: CGFloat {
         switch size {
         case .large:
@@ -29,7 +29,7 @@ struct PrimaryButton: View {
             return LayoutToken.cornerRadius12
         }
     }
-    
+
     private var verticalPadding: CGFloat {
         switch size {
         case .large:
@@ -38,9 +38,9 @@ struct PrimaryButton: View {
             return LayoutToken.padding14
         }
     }
-    
+
     // MARK: - Init
-    
+
     init(
         size: Size = .large,
         title: String,
@@ -52,9 +52,9 @@ struct PrimaryButton: View {
         self.imageName = imageName
         self.onTapAction = onTapAction
     }
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         Button {
             onTapAction()
@@ -65,7 +65,6 @@ struct PrimaryButton: View {
                 }
                 Text(title)
                     .font(size == .large ? TextToken.titleL : TextToken.titleS)
-                    
             }
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)

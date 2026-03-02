@@ -14,24 +14,24 @@ enum GameType: Equatable, Hashable {
 
 @Observable
 final class GameViewModel {
-    
+
     // MARK: - Properties
-    
+
     private(set) var viewState: ViewState = .loaded
-    
+
     private(set) var placements: Set<QueenPosition> = []
     private(set) var gameSeconds: Int = 0
     private(set) var efficiency: Int = 0
     private(set) var moveCount: Int = 0
     private(set) var hintWasUsed: Bool = false
     private(set) var isHintEnabled: Bool = false
-    
+
     private(set) var winResult: GameHistoryItemModel?
-    
+
     private var timer: Timer?
     private let mode: GameType
     var queenStyle: QueenStyle
-    
+
     var boardSize: Int {
         switch mode {
         case .new:
@@ -40,30 +40,34 @@ final class GameViewModel {
             return item.boardSize
         }
     }
-    
+
     var isHistoryGame: Bool {
-        if case .history = mode { return true }
+        if case .history = mode {
+            return true
+        }
         return false
     }
-    
+
     var historyItem: GameHistoryItemModel? {
-        if case .history(let item) = mode { return item }
+        if case .history(let item) = mode {
+            return item
+        }
         return nil
     }
-    
+
     var isWon: Bool {
         winResult != nil
     }
-    
+
     // MARK: - Dependencies
 
     private var settingsService: ISettingsService
     private var gameHistoryService: IGameHistoryService
     private var gameValidationService: IGameValidationService
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
-    
+
     // MARK: - Init
-    
+
     init(
         mode: GameType,
         settingsService: ISettingsService,
@@ -77,35 +81,35 @@ final class GameViewModel {
         self.gameValidationService = gameValidationService
         self.homeCoordinatorDelegate = homeCoordinatorDelegate
         self.queenStyle = settingsService.queenStyle
-        
+
         setupInitialState()
     }
-    
+
     deinit {
         stopTimer()
     }
-    
+
     // MARK: - Public
-    
+
     var conflictLines: Set<QueenPosition> {
         gameValidationService.conflictLines(placements: placements, boardSize: boardSize)
     }
-    
+
     var conflictPositions: Set<QueenPosition> {
         gameValidationService.conflictPositions(placements: placements)
     }
-    
+
     var hintPositions: Set<QueenPosition> {
         guard isHintEnabled else { return [] }
         return gameValidationService.hintPositions(placements: placements, boardSize: boardSize)
     }
-    
+
     func updateQueenStyle() {
         settingsService.updateQueenStyle(queenStyle)
     }
-    
+
     // MARK: - Actions
-    
+
     func handle(_ action: Action) {
         switch action {
         case .back:
@@ -119,7 +123,9 @@ final class GameViewModel {
             toggleQueen(at: position)
         case .toggleHint:
             isHintEnabled.toggle()
-            if isHintEnabled { hintWasUsed = true }
+            if isHintEnabled {
+                hintWasUsed = true
+            }
         case .setQueenStyle(let style):
             queenStyle = style
             updateQueenStyle()
@@ -127,9 +133,9 @@ final class GameViewModel {
             homeCoordinatorDelegate?.handle(.playAgain(boardSize: boardSize))
         }
     }
-    
+
     // MARK: - Private
-    
+
     private func setupInitialState() {
         switch mode {
         case .new:
@@ -149,7 +155,7 @@ final class GameViewModel {
             stopTimer()
         }
     }
-    
+
     private func toggleQueen(at position: QueenPosition) {
         TapticEngine.feedback(tapticType: .queenPlacement)
         if placements.contains(position) {
@@ -160,7 +166,7 @@ final class GameViewModel {
             checkWinAndSaveIfNeeded()
         }
     }
-    
+
     private func checkWinAndSaveIfNeeded() {
         guard !isHistoryGame,
               gameValidationService.isWon(placements: placements, boardSize: boardSize) else {
@@ -182,9 +188,9 @@ final class GameViewModel {
         TapticEngine.feedback(tapticType: .victory)
         homeCoordinatorDelegate?.handle(.presentWinModal(item))
     }
-    
+
     // MARK: - Timer
-    
+
     private func startTimer() {
         guard !isHistoryGame else {
             return
@@ -193,12 +199,12 @@ final class GameViewModel {
             self?.gameSeconds += 1
         }
     }
-    
+
     private func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     var formattedTime: String {
         let m = gameSeconds / 60
         let s = gameSeconds % 60

@@ -17,7 +17,7 @@ protocol IGameValidationService {
 final class GameValidationService: IGameValidationService {
 
     func conflictLines(placements: Set<QueenPosition>, boardSize: Int) -> Set<QueenPosition> {
-        
+
         let queens = Array(placements)
         var lines = Set<QueenPosition>()
         let n = boardSize
@@ -27,10 +27,14 @@ final class GameValidationService: IGameValidationService {
                 let p = queens[i], q = queens[j]
 
                 if p.row == q.row {
-                    for c in 0..<n { lines.insert(QueenPosition(row: p.row, col: c)) }
+                    for c in 0..<n {
+                        lines.insert(QueenPosition(row: p.row, col: c))
+                    }
                 }
                 if p.col == q.col {
-                    for r in 0..<n { lines.insert(QueenPosition(row: r, col: p.col)) }
+                    for r in 0..<n {
+                        lines.insert(QueenPosition(row: r, col: p.col))
+                    }
                 }
                 if abs(p.row - q.row) == abs(p.col - q.col) {
                     let dr = q.row > p.row ? 1 : -1
@@ -44,10 +48,10 @@ final class GameValidationService: IGameValidationService {
     }
 
     func conflictPositions(placements: Set<QueenPosition>) -> Set<QueenPosition> {
-        
+
         let queens = Array(placements)
         var result = Set<QueenPosition>()
-        
+
         for i in 0..<queens.count {
             for j in (i + 1)..<queens.count {
                 if attacking(queens[i], queens[j]) {
@@ -60,9 +64,9 @@ final class GameValidationService: IGameValidationService {
     }
 
     func hintPositions(placements: Set<QueenPosition>, boardSize: Int) -> Set<QueenPosition> {
-       
+
         var hintPos = Set<QueenPosition>()
-        
+
         for q in placements {
             for r in 0..<boardSize {
                 for c in 0..<boardSize {

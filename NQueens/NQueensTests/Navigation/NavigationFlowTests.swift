@@ -13,11 +13,6 @@ final class NavigationFlowTests: XCTestCase {
 
     private static var leakBag: [Any] = []
 
-    override func tearDown() {
-        super.tearDown()
-        // Leak bag is intentionally never cleared so @Observable objects are not deallocated
-    }
-
     // MARK: - Open game
 
     func test_openGame_pushesGameDestination() {

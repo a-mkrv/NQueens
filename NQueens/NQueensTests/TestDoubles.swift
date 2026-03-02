@@ -8,7 +8,7 @@ enum Sample {
         QueenPosition(row: 0, col: 1),
         QueenPosition(row: 1, col: 3),
         QueenPosition(row: 2, col: 0),
-        QueenPosition(row: 3, col: 2),
+        QueenPosition(row: 3, col: 2)
     ]
 
     static func game(

@@ -14,7 +14,7 @@ extension GameViewModel {
     enum ViewState: Equatable {
         case loaded
     }
-    
+
     // MARK: - Action
 
     enum Action {

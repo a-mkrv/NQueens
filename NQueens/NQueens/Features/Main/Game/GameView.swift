@@ -8,45 +8,45 @@
 import SwiftUI
 
 struct GameView: View {
-    
+
     let viewModel: GameViewModel
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         ZStack {
             ColorToken.backgroundMain
                 .ignoresSafeArea()
-            
+
             VStack(spacing: LayoutToken.spacing0) {
                 headerSection
                 statsSection
-                
+
                 if !viewModel.isHistoryGame {
                     conflictBannerSection
                         .padding(.top, LayoutToken.padding12)
                 }
-                
+
                 boardSection
                     .padding(.top, viewModel.isHistoryGame ? LayoutToken.padding16 : 0)
-                
+
                 if !viewModel.isHistoryGame {
                     hintToggleSection
                     queenStyleSection
                 }
-                
+
                 if viewModel.isHistoryGame {
                     historyFooterSection
                 }
-                
+
                 Spacer(minLength: LayoutToken.padding24)
             }
         }
         .navigationBarBackButtonHidden()
     }
-    
+
     // MARK: - Header
-    
+
     private var headerSection: some View {
         HStack {
             Button {
@@ -57,15 +57,15 @@ struct GameView: View {
                     .foregroundStyle(ColorToken.textPrimary)
                     .frame(squared: .touchTarget)
             }
-            
+
             Spacer()
-            
+
             Text(viewModel.isHistoryGame ? "History" : "\(viewModel.boardSize)×\(viewModel.boardSize)")
                 .font(TextToken.headM)
                 .foregroundStyle(ColorToken.textPrimary)
-            
+
             Spacer()
-            
+
             Button {
                 viewModel.handle(.restart)
             } label: {
@@ -80,9 +80,9 @@ struct GameView: View {
         .padding(.top, LayoutToken.padding14)
         .padding(.bottom, LayoutToken.padding8)
     }
-    
+
     // MARK: - Queens Counter
-    
+
     private var statsSection: some View {
         HStack(spacing: LayoutToken.spacing0) {
             statItem(value: "\(viewModel.placements.count)/\(viewModel.boardSize)", label: "Queens")
@@ -90,7 +90,7 @@ struct GameView: View {
             statItem(value: viewModel.formattedTime, label: "Time")
             divider
             statItem(value: "\(viewModel.moveCount)", label: "Moves")
-            
+
             if viewModel.isHistoryGame {
                 divider
                 statItem(value: "\(viewModel.efficiency)%", label: "Efficiency")
@@ -100,7 +100,7 @@ struct GameView: View {
         .padding(.vertical, LayoutToken.padding10)
         .background(ColorToken.backgroundCard)
     }
-    
+
     private var conflictBannerSection: some View {
         ZStack {
             if !viewModel.conflictPositions.isEmpty {
@@ -129,7 +129,7 @@ struct GameView: View {
         .frame(height: .bannerHeight)
         .animation(.easeInOut(duration: 0.2), value: viewModel.conflictPositions.isEmpty)
     }
-    
+
     private func statItem(value: String, label: String) -> some View {
         VStack(spacing: LayoutToken.spacing2) {
             Text(value)
@@ -142,15 +142,15 @@ struct GameView: View {
         }
         .frame(maxWidth: .infinity)
     }
-    
+
     private var divider: some View {
         Rectangle()
             .fill(ColorToken.backgroundElevated)
             .frame(width: .borderWidth, height: .bannerHeight)
     }
-    
+
     // MARK: - History Footer (when viewing a past game)
-    
+
     private var historyFooterSection: some View {
         VStack(spacing: LayoutToken.spacing12) {
             if let item = viewModel.historyItem {
@@ -167,7 +167,7 @@ struct GameView: View {
                 .padding(.horizontal, LayoutToken.padding20)
                 .cardStyle()
             }
-            
+
             PrimaryButton(size: .compact, title: "Play Again", imageName: "arrow.clockwise") {
                 viewModel.handle(.playAgain)
             }
@@ -175,23 +175,25 @@ struct GameView: View {
         .padding(.horizontal, LayoutToken.padding20)
         .padding(.top, LayoutToken.padding24)
     }
-    
+
     // MARK: - Hint Toggle
-    
+
     private var hintToggleSection: some View {
         HStack(spacing: LayoutToken.spacing10) {
             Image(systemName: "lightbulb.fill")
                 .font(TextToken.captionM)
                 .foregroundStyle(viewModel.isHintEnabled ? ColorToken.yellow : ColorToken.textSecondary)
-            
+
             Text("Hints")
                 .font(TextToken.bodyM)
                 .foregroundStyle(ColorToken.textPrimary)
-            
+
             Spacer()
-            
+
             Toggle("", isOn: Binding(
-                get: { viewModel.isHintEnabled },
+                get: {
+                    viewModel.isHintEnabled
+                },
                 set: { newValue in
                     if newValue != viewModel.isHintEnabled {
                         viewModel.handle(.toggleHint)
@@ -207,9 +209,9 @@ struct GameView: View {
         .padding(.horizontal, LayoutToken.padding20)
         .padding(.top, LayoutToken.padding12)
     }
-    
+
     // MARK: - Queen Style
-    
+
     private var queenStyleSection: some View {
         HStack(spacing: LayoutToken.spacing10) {
             Text("Queen")
@@ -228,7 +230,7 @@ struct GameView: View {
         .padding(.horizontal, LayoutToken.padding20)
         .padding(.top, LayoutToken.padding12)
     }
-    
+
     private func queenStyleButton(_ style: QueenStyle) -> some View {
         let isSelected = viewModel.queenStyle == style
         return Button {
@@ -247,9 +249,9 @@ struct GameView: View {
         }
         .buttonStyle(.plain)
     }
-    
+
     // MARK: - Board
-    
+
     private var boardSection: some View {
         GeometryReader { geo in
             let n = viewModel.boardSize
@@ -258,7 +260,7 @@ struct GameView: View {
             let width = geo.size.width - padding * 2
             let totalSpacing = spacing * CGFloat(max(0, n - 1))
             let side = (width - totalSpacing) / CGFloat(n)
-            
+
             VStack(spacing: spacing) {
                 ForEach(0..<n, id: \.self) { row in
                     HStack(spacing: spacing) {
@@ -274,7 +276,7 @@ struct GameView: View {
         }
         .aspectRatio(1, contentMode: .fit)
     }
-    
+
     private func cellView(row: Int, col: Int, size: CGFloat) -> some View {
         let position = QueenPosition(row: row, col: col)
         let isLight = (row + col) % 2 == 0
@@ -282,7 +284,7 @@ struct GameView: View {
         let isConflict = viewModel.conflictPositions.contains(position)
         let isConflictLine = !hasQueen && !isConflict && viewModel.conflictLines.contains(position)
         let isAttacked = !hasQueen && !isConflict && !isConflictLine && viewModel.hintPositions.contains(position)
-        
+
         return RoundedRectangle(cornerRadius: LayoutToken.cornerRadius4)
             .fill(cellColor(isLight: isLight, isConflict: isConflict, isConflictLine: isConflictLine, isAttacked: isAttacked))
             .overlay(
@@ -306,18 +308,18 @@ struct GameView: View {
                 }
             }
     }
-    
+
     @ViewBuilder
     private func queenContent(size: CGFloat, isLight: Bool, isConflict: Bool) -> some View {
         let color = isConflict
-        ? ColorToken.red
-        : (isLight ? ColorToken.white.opacity(0.75) : ColorToken.white.opacity(0.9))
+            ? ColorToken.red
+            : (isLight ? ColorToken.white.opacity(0.75) : ColorToken.white.opacity(0.9))
         Image(viewModel.queenStyle.imageName)
             .resizable()
             .frame(width: size * 0.7, height: size * 0.7)
             .foregroundStyle(color)
     }
-    
+
     private func cellColor(isLight: Bool, isConflict: Bool, isConflictLine: Bool, isAttacked: Bool) -> Color {
         if isConflict {
             return ColorToken.red.opacity(isLight ? 0.25 : 0.40)

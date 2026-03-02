@@ -10,26 +10,26 @@ import Foundation
 protocol IGameHistoryService {
     var gamesCount: Int { get }
     var streakCount: Int { get }
-    
+
     var games: [GameHistoryItemModel] { get }
-    
+
     func addGame(_ item: GameHistoryItemModel)
     func clearAllGames()
 }
 
 @Observable
 final class GameHistoryService: IGameHistoryService {
-    
+
     // MARK: - Properties
-    
+
     private enum Storage {
         static let historyKey = "gameHistory"
     }
-    
+
     var gamesCount: Int {
         games.count
     }
-    
+
     var streakCount: Int {
         let calendar = Calendar.current
         let days = Set(games.map { calendar.startOfDay(for: $0.date) })
@@ -41,32 +41,32 @@ final class GameHistoryService: IGameHistoryService {
         }
         return count
     }
-    
+
     var games: [GameHistoryItemModel]
-    
+
     init() {
         self.games = Self.loadFromStorage()
     }
-    
+
     // MARK: - Public
-    
+
     func addGame(_ item: GameHistoryItemModel) {
         games.insert(item, at: 0)
         updateStorage()
     }
-    
+
     func clearAllGames() {
         games = []
         updateStorage()
     }
-    
+
     // MARK: - Local Storage
-    
+
     private func updateStorage() {
         guard let data = try? JSONEncoder().encode(games) else { return }
         UserDefaults.standard.set(data, forKey: Storage.historyKey)
     }
-    
+
     private static func loadFromStorage() -> [GameHistoryItemModel] {
         guard let data = UserDefaults.standard.data(forKey: Storage.historyKey),
               let decoded = try? JSONDecoder().decode([GameHistoryItemModel].self, from: data) else {

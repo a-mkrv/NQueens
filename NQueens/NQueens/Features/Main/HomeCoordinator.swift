@@ -15,18 +15,18 @@ protocol HomeCoordinatorDelegate: AnyObject {
 
 @Observable
 final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCoordinator.Sheet> {
-    
+
     // MARK: - Navigation
-    
+
     enum Destination: Hashable {
         case game(GameType)
         case gameHistory
     }
-    
+
     enum Sheet: Identifiable, Equatable, Hashable {
         case boardSize
         case winModal(GameHistoryItemModel)
-        
+
         var id: String {
             switch self {
             case .boardSize: return "boardSize"
@@ -34,7 +34,7 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
             }
         }
     }
-    
+
     enum Action {
         case openGame(GameType)
         case presentGameHistory
@@ -45,12 +45,12 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
         case restartGame
         case playAgain(boardSize: Int)
     }
-    
+
     // MARK: - Properties
-    
+
     @ObservationIgnored
     lazy var homeViewModel: HomeViewModel = makeHomeViewModel()
-    
+
     /// Cached per mode so that presenting a sheet doesn't recreate the VM, and opening a different mode gets a fresh VM.
     private var cachedGameViewModel: (mode: GameType, vm: GameViewModel)?
 
@@ -58,15 +58,15 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
     private var cachedGameHistoryViewModel: GameHistoryViewModel?
 
     private let dependencies: AppDependencies
-    
+
     // MARK: - Init
-    
+
     init(dependencies: AppDependencies) {
         self.dependencies = dependencies
     }
-    
+
     // MARK: - ViewModels Factory
-    
+
     private func makeHomeViewModel() -> HomeViewModel {
         HomeViewModel(
             gameHistoryService: dependencies.gameHistoryService,
@@ -74,39 +74,39 @@ final class HomeCoordinator: FlowCoordinator<HomeCoordinator.Destination, HomeCo
             homeCoordinatorDelegate: self
         )
     }
-    
+
     func makeGameHistoryViewModel() -> GameHistoryViewModel {
         if let cached = cachedGameHistoryViewModel {
             return cached
         }
-        let vm = GameHistoryViewModel(
+        let viewModel = GameHistoryViewModel(
             gameHistoryService: dependencies.gameHistoryService,
             settingsService: dependencies.settingsService,
             homeCoordinatorDelegate: self
         )
-        cachedGameHistoryViewModel = vm
-        return vm
+        cachedGameHistoryViewModel = viewModel
+        return viewModel
     }
-    
+
     func makeGameViewModel(for mode: GameType) -> GameViewModel {
         if let cached = cachedGameViewModel, cached.mode == mode {
             return cached.vm
         }
-        let vm = GameViewModel(
+        let viewModel = GameViewModel(
             mode: mode,
             settingsService: dependencies.settingsService,
             gameHistoryService: dependencies.gameHistoryService,
             gameValidationService: dependencies.gameValidationService,
             homeCoordinatorDelegate: self
         )
-        cachedGameViewModel = (mode, vm)
-        return vm
+        cachedGameViewModel = (mode, viewModel)
+        return viewModel
     }
-    
+
     func makeBoardSheetViewModel() -> BoardSheetViewModel {
         BoardSheetViewModel(settingsService: dependencies.settingsService, homeCoordinatorDelegate: self)
     }
-    
+
     func makeWinModalViewModel(result: GameHistoryItemModel) -> WinModalViewModel {
         WinModalViewModel(result: result, homeCoordinatorDelegate: self)
     }

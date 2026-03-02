@@ -21,12 +21,12 @@ protocol ISettingsService {
 final class SettingsService: ISettingsService {
 
     // MARK: - Properties
-    
+
     private enum SettingsStorage {
         static let boardSizeKey = "settings.boardSize"
         static let queenStyleKey = "settings.queenStyle"
     }
-    
+
     private(set) var boardSize: Int
     private(set) var queenStyle: QueenStyle
 
@@ -46,7 +46,7 @@ final class SettingsService: ISettingsService {
         boardSize = size
         UserDefaults.standard.set(boardSize, forKey: SettingsStorage.boardSizeKey)
     }
-    
+
     func updateQueenStyle(_ style: QueenStyle) {
         queenStyle = style
         UserDefaults.standard.set(queenStyle.rawValue, forKey: SettingsStorage.queenStyleKey)

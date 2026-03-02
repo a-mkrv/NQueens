@@ -13,7 +13,7 @@ final class WinModalViewModel {
     // MARK: - Properties
 
     private(set) var viewState: ViewState = .loaded
-    
+
     let result: GameHistoryItemModel
 
     // MARK: - Dependencies

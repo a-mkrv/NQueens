@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+
     let viewModel: HomeViewModel
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         ZStack {
             ColorToken.backgroundMain
                 .ignoresSafeArea()
-            
+
             switch viewModel.viewState {
             case .loaded:
                 loadedView
             }
         }
     }
-    
+
     // MARK: - Loaded
-    
+
     private var loadedView: some View {
         VStack(spacing: LayoutToken.spacing12) {
             headerSection
@@ -34,21 +34,21 @@ struct HomeView: View {
             boardSizeSelector
             gameHistoryCard
             playButton
-            
+
             Spacer()
-            
+
             bottomSection
         }
         .padding(.horizontal, LayoutToken.padding24)
     }
-    
+
     private var headerSection: some View {
         HStack {
             Spacer()
             streakBadge
         }
     }
-    
+
     private var streakBadge: some View {
         HStack(spacing: LayoutToken.spacing8) {
             Text("🔥")
@@ -60,15 +60,15 @@ struct HomeView: View {
         .padding(LayoutToken.padding12)
         .background(ColorToken.backgroundCard, in: Capsule())
     }
-    
+
     // MARK: - Logo
-    
+
     private var logoSection: some View {
         VStack(spacing: LayoutToken.spacing8) {
             Text("♛")
                 .font(.system(size: .logoSize))
                 .foregroundStyle(ColorToken.textPrimary)
-            
+
             Text("N-Queens")
                 .font(TextToken.headM)
                 .foregroundStyle(ColorToken.textPrimary)
@@ -76,9 +76,9 @@ struct HomeView: View {
         .padding(.top, LayoutToken.padding24)
         .padding(.bottom, LayoutToken.padding12)
     }
-    
+
     // MARK: - Board Size Selector
-    
+
     private var boardSizeSelector: some View {
         Button {
             viewModel.handle(.openBoardSizeSheet)
@@ -91,7 +91,7 @@ struct HomeView: View {
             )
         }
     }
-    
+
     private var gameHistoryCard: some View {
         Button {
             viewModel.handle(.presentGameHistory)
@@ -104,9 +104,9 @@ struct HomeView: View {
             )
         }
     }
-    
+
     // MARK: - Play Button
-    
+
     private var playButton: some View {
         PrimaryButton(
             size: .large,
@@ -116,18 +116,18 @@ struct HomeView: View {
         }
         .padding(.top, LayoutToken.padding36)
     }
-    
+
     // MARK: - Bottom Section
-    
+
     private var bottomSection: some View {
         tipCard
     }
-    
+
     private var tipCard: some View {
         HStack(alignment: .center, spacing: LayoutToken.spacing12) {
             Text("💡")
                 .font(TextToken.titleS)
-            
+
             Text("**Place N-Queens** on the board so that no two attack each other - no same row, column, or diagonal.")
                 .font(TextToken.captionM)
                 .foregroundStyle(ColorToken.textSecondary)
@@ -143,4 +143,3 @@ struct HomeView: View {
 private extension CGFloat {
     static let logoSize: CGFloat = 64
 }
-

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct HomeCoordinatorView: View {
-    
+
     // MARK: - Properties
-    
+
     private var coordinator: HomeCoordinator
-    
+
     @State private var path: [HomeCoordinator.Destination] = []
     @State private var sheet: HomeCoordinator.Sheet?
-    
+
     // MARK: - Init
-    
+
     init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
-    
+
     // MARK: - Body
-    
+
     var body: some View {
         NavigationStack(path: $path) {
             rootContent
@@ -32,13 +32,13 @@ struct HomeCoordinatorView: View {
         }
         .bind(to: coordinator, path: $path, sheet: $sheet)
     }
-    
+
     private var rootContent: some View {
         HomeView(viewModel: coordinator.homeViewModel)
     }
-    
+
     // MARK: - Destination Factory
-    
+
     @ViewBuilder
     private func destination(for route: HomeCoordinator.Destination) -> some View {
         switch route {
@@ -48,9 +48,9 @@ struct HomeCoordinatorView: View {
             GameHistoryView(viewModel: coordinator.makeGameHistoryViewModel())
         }
     }
-    
+
     // MARK: - Sheet Factory
-    
+
     @ViewBuilder
     private func sheetContent(for sheet: HomeCoordinator.Sheet) -> some View {
         switch sheet {

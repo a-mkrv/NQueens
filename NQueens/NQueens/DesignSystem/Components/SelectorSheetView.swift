@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectorSheetView<Item: Hashable>: View {
 
     // MARK: - Properties
-    
+
     let title: String
     let items: [Item]
     let selectedItem: Item
@@ -69,9 +69,9 @@ struct SelectorSheetView<Item: Hashable>: View {
                         Text(itemTitle(item))
                             .font(TextToken.titleM)
                             .foregroundStyle(ColorToken.textPrimary)
-                        
+
                         Spacer()
-                        
+
                         if item == selectedItem {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: .iconSize22))
@@ -92,4 +92,3 @@ private extension CGFloat {
     static let iconSize22: CGFloat = 22
     static let iconSize28: CGFloat = 28
 }
-

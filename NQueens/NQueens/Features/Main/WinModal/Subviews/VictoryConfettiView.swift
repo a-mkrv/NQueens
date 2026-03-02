@@ -12,7 +12,7 @@ struct VictoryConfettiView: View {
         ColorToken.yellow,
         ColorToken.green,
         ColorToken.orange,
-        ColorToken.white.opacity(0.9),
+        ColorToken.white.opacity(0.9)
     ]
 
     private static let particleCount = 24

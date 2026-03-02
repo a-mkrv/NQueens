@@ -67,7 +67,7 @@ final class GameValidationServiceTests: XCTestCase {
     func test_isWon_fewerQueensThanSize_returnsFalse() {
         let placements: Set<QueenPosition> = [
             QueenPosition(row: 0, col: 1),
-            QueenPosition(row: 1, col: 3),
+            QueenPosition(row: 1, col: 3)
         ]
         XCTAssertFalse(sut.isWon(placements: placements, boardSize: 4))
     }
@@ -77,7 +77,7 @@ final class GameValidationServiceTests: XCTestCase {
             QueenPosition(row: 0, col: 0),
             QueenPosition(row: 1, col: 1),
             QueenPosition(row: 2, col: 2),
-            QueenPosition(row: 3, col: 3),
+            QueenPosition(row: 3, col: 3)
         ]
         XCTAssertFalse(sut.isWon(placements: placements, boardSize: 4))
     }
@@ -96,7 +96,7 @@ final class GameValidationServiceTests: XCTestCase {
             QueenPosition(row: 4, col: 2),
             QueenPosition(row: 5, col: 6),
             QueenPosition(row: 6, col: 1),
-            QueenPosition(row: 7, col: 3),
+            QueenPosition(row: 7, col: 3)
         ]
         XCTAssertTrue(sut.isWon(placements: placements, boardSize: 8))
     }

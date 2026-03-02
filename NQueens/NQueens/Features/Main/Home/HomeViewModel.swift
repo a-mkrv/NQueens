@@ -9,32 +9,32 @@ import SwiftUI
 
 @Observable
 final class HomeViewModel {
-    
+
     // MARK: - Properties
-    
+
     private(set) var viewState: ViewState = .loaded
-    
+
     var boardSize: Int {
         settingsService.boardSize
     }
-    
+
     var totalGames: Int {
         gameHistoryService.gamesCount
     }
-    
+
     var streakCount: Int {
         gameHistoryService.streakCount
     }
-    
+
     // MARK: - Dependencies
-    
+
     private let gameHistoryService: IGameHistoryService
     private let settingsService: ISettingsService
-    
+
     private weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
     // MARK: - Init
-    
+
     init(
         gameHistoryService: IGameHistoryService,
         settingsService: ISettingsService,
@@ -44,9 +44,9 @@ final class HomeViewModel {
         self.settingsService = settingsService
         self.homeCoordinatorDelegate = homeCoordinatorDelegate
     }
-    
+
     // MARK: - Public
-    
+
     func handle(_ action: Action) {
         switch action {
         case .openGame:

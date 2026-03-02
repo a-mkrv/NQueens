@@ -8,9 +8,9 @@
 import Foundation
 
 struct LayoutToken {
-   
+
     // MARK: - Padding
-    
+
     static let padding4: CGFloat = 4
     static let padding6: CGFloat = 6
     static let padding8: CGFloat = 8
@@ -25,7 +25,7 @@ struct LayoutToken {
     static let padding36: CGFloat = 36
 
     // MARK: - Spacing
-    
+
     static let spacing0: CGFloat = 0
     static let spacing1: CGFloat = 1
     static let spacing2: CGFloat = 2
@@ -36,7 +36,7 @@ struct LayoutToken {
     static let spacing12: CGFloat = 12
     static let spacing14: CGFloat = 14
     static let spacing20: CGFloat = 20
-    
+
     // MARK: - Corner Radius
 
     static let cornerRadius4: CGFloat = 4

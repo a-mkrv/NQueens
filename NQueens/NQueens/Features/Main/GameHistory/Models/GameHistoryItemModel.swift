@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameHistoryItemModel: Identifiable, Equatable, Hashable, Codable {
-    
+
     let id: UUID
     let boardSize: Int
     let moveCount: Int
@@ -18,10 +18,12 @@ struct GameHistoryItemModel: Identifiable, Equatable, Hashable, Codable {
     let solvedWithHint: Bool
 
     var efficiency: Int {
-        guard moveCount > 0 else { return 0 }
+        guard moveCount > 0 else {
+            return 0
+        }
         return min(100, Int(Double(boardSize) / Double(moveCount) * 100))
     }
-    
+
     var formattedDuration: String {
         let m = durationSeconds / 60
         let s = durationSeconds % 60
