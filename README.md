@@ -1,6 +1,7 @@
 # NQueens
 
-A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other.
+- **Origin** — Created as a take-home assignment for **Chess.com**.
+- **What it is** — A SwiftUI app for the N-Queens puzzle: place N queens on an N×N board so that no two attack each other.
 
 ## Screenshots & Video
 
